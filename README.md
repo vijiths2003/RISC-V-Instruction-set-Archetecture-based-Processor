@@ -56,19 +56,16 @@ The processor implements a pipelined data path for efficient execution of instru
 ## Directory Structure
 
 ```
-├── src/
-│   ├── alu.v            # Arithmetic Logic Unit
-│   ├── control_unit.v   # Control Unit
-│   ├── datapath.v       # Processor Datapath
-│   ├── memory.v         # Memory Module
-│   ├── register_file.v  # Register File
-│   └── top_module.v     # Top-level Module
-├── testbench/
-│   ├── alu_tb.v         # ALU Testbench
-│   ├── control_tb.v     # Control Unit Testbench
-│   └── processor_tb.v   # Processor Testbench
-├── docs/
-│   └── design_doc.md    # Design Documentation
+├── Processor
+│   ├── ALU.v                        # Arithmetic Logic Unit
+│   ├── CONTROL.v                    # Control Unit
+│   ├── DATAPATH.v                   # Processor Datapath
+│   ├── INST_MEM.v                   # Memory Module
+│   ├── REG_FILE.v                   # Register File
+│   └── IFU.v                        # Instruction fetch unit
+│   └── PROCESSOR.v                  # Main Code
+│   └── Processor_tb.v               # Testbench code
+│   └── output_wave.vcd              # Output file
 └── README.md            # Project Overview
 ```
 
@@ -103,7 +100,7 @@ The functionality of the processor is validated using testbenches written for in
    ```
 3. Compile the Verilog files using Icarus Verilog (iverilog):
    ```bash
-   iverilog -o processor_sim src/*.v testbench/processor_tb.v
+   iverilog -o processor_sim processor_tb.v
    ```
    This command compiles all the source files and the processor testbench into a simulation executable called `processor_sim`.
 
@@ -115,9 +112,9 @@ The functionality of the processor is validated using testbenches written for in
 
 5. View the waveforms using GTKWave:
    ```bash
-   gtkwave dump.vcd
+   gtkwave output_wave.vcd
    ```
-   Replace `dump.vcd` with the actual name of the generated `.vcd` file if different. Use GTKWave to analyze signal behavior and verify the functionality of the processor.
+ Use GTKWave to analyze signal behavior and verify the functionality of the processor.
 
 ---
 
